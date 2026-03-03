@@ -1,0 +1,143 @@
+@use '../core/variables' as *;
+@use '../core/mixins' as *;
+@use '../components/generic/sizes' as *;
+
+
+// // Variables matching the reference brand colors
+// $card-bg-tint: #fdf2f2; // Light pink background seen in grid
+// $card-header-bg: rgba(224, 211, 211, 0.9); // Muted pinkish-gray header
+// $card-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+// $jindal-orange: #f26522; // Core brand color
+
+// .stack-wrapper {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 100%;
+//   min-height: 700px;
+//   background-color: $card-bg-tint;
+//   padding: 50px;
+// }
+
+// .card-stack-container {
+//   position: relative;
+//   width: 380px;
+//   height: 500px;
+//   perspective: 1200px; // Adds depth for transitions
+// }
+
+// .stacked-card {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background: white;
+//   border-radius: 2px; // Sharp, professional corners from image
+//   box-shadow: $card-shadow;
+//   display: flex;
+//   flex-direction: column;
+//   overflow: hidden;
+//   border: 1px solid rgba(0, 0, 0, 0.05);
+//   cursor: pointer;
+
+//   .card-header {
+//     background-color: $card-header-bg;
+//     padding: 14px 24px;
+//     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
+//     span {
+//       font-size: 15px;
+//       font-weight: 500;
+//       color: #3e4c59;
+//       letter-spacing: 0.05em;
+//       text-transform: uppercase; // Matches "HEALTHCARE" style
+//     }
+//   }
+
+//   .card-image {
+//     flex: 1;
+//     position: relative;
+//     img {
+//       width: 100%;
+//       height: 100%;
+//       object-fit: cover;
+//       display: block;
+//     }
+//   }
+// }
+$card-bg-tint: #fdf2f2;
+$card-header-bg: #E4E4E4;
+
+.stack-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 100vh; // Changed to 100vh for proper pinning
+  background: white;
+  position: relative;
+}
+
+.card-stack-container {
+  position: relative;
+  width: 380px;
+  height: 500px;
+  /* CRITICAL: Ensures the fan effect expands correctly from the center */
+  transform-style: preserve-3d;
+  margin-top: 130px;
+}
+
+.stacked-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  /* Scale from the top to match the header-stacking UI */
+  transform-origin: top center; 
+
+  .card-header {
+    background-color: $card-header-bg;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    @include mq(tablet-max){
+        padding: 20px 26px;
+        min-height: 80px;
+    }
+    span {
+    color: var(--color-accent-blue);
+    font-weight: var(--fontRegular);
+    @include font-size(16);
+    text-transform: uppercase;
+    @include mq('tablet') {
+        @include font-size(18);
+    }
+
+    @include mq('desktop-min') {
+        @include font-size(20);
+    }
+
+    @include mq('desktop-wide') {
+        @include font-size(24);
+    }
+    }
+  }
+
+  .card-image {
+    flex: 1;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

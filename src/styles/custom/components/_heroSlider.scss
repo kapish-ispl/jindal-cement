@@ -1,0 +1,544 @@
+@use '../core/variables' as *;
+@use '../core/mixins' as *;
+@use '../components/generic/sizes' as *;
+
+
+// Variables
+$anim-duration: 0.5s;
+$slide-duration: 8000ms;
+
+
+// Animation Mixins
+@mixin fade-up-anim($delay) {
+    @include opacity(0);
+    @include transform(translateY(20px));
+    @include animation(fadeUp 1s forwards);
+    animation-delay: $delay;
+}
+
+@include keyframes(fadeUp) {
+    to {
+        @include opacity(1);
+        @include transform(translateY(0));
+    }
+}
+
+// .hero-slider {
+//     // CSS Variables for calculations
+//     --thumb-w: 165px;
+//     --thumb-h: 260px;
+//     --thumb-gap: 10px;
+
+//     // Wrapper Width Calculation:
+//     // (130px * 3 slides) + (10px * 3 gaps) + (26px partial 4th slide) = 446px
+//     --wrapper-width: calc((var(--thumb-w) * 3) + (var(--thumb-gap) * 3) + (var(--thumb-w) * 0.2));
+
+//     // Origin Calculation:
+//     // Wrapper is 50px from right.
+//     // Active thumb is the 1st one (left side of wrapper).
+//     // Thumb center is 65px (half of 130) from the wrapper's left edge.
+//     // Offset from right screen edge = 50px + (446px - 65px) = 431px -> Round to 430px
+//     --origin-offset: calc(50px + (var(--wrapper-width) - (var(--thumb-w) / 2)));
+
+//     position: relative;
+//     width: 100vw;
+//     height: 100vh;
+//     background-color: #000;
+//     overflow: hidden;
+
+//     // --- 1. Main Background Slider ---
+//     &__main {
+//         width: 100%;
+//         height: 100%;
+//         z-index: 1;
+
+//         // Target Swiper internal classes
+//         .swiper-slide {
+//             position: relative;
+//             overflow: hidden;
+//             // Critical: Origin for the expansion animation
+//             transform-origin: calc(100% - var(--origin-offset)) 90%;
+//         }
+//     }
+
+//     &__bg {
+//         width: 100%;
+//         height: 100%;
+//         object-fit: cover;
+//         filter: brightness(0.6);
+//     }
+
+//     // --- 2. Content Overlay ---
+//     &__content {
+//         position: absolute;
+//         bottom: 10%;
+//         left: 5%;
+//         z-index: 10;
+//         color: var(--color-white);
+//         max-width: 600px;
+//         pointer-events: none;
+//     }
+
+//     &__title {
+//         @include font-size(64, 1.1);
+//         margin-bottom: 1rem;
+//         overflow: hidden;
+
+//         @include mq('tablet', max) {
+//             @include font-size(40, 1.1);
+//         }
+//     }
+
+//     &__subtitle {
+//         @include font-size(24);
+//         overflow: hidden;
+//     }
+
+//     // --- 3. Bottom Controls Container ---
+//     &__controls-wrapper {
+//         position: absolute;
+//         bottom: 40px;
+//         right: 50px;
+//         z-index: 30;
+//         @include flexbox();
+//         @include flex-direction(column, vertical);
+//         @include align-items(flex-end);
+//         gap: 10px;
+
+//         @include mq('tablet', max) {
+//             display: none;
+//         }
+//     }
+
+//     // --- 4. Thumbnails ---
+//     &__thumbs {
+//         width: var(--wrapper-width);
+//         height: 120px;
+//         overflow: hidden;
+//         @include transition(opacity $anim-duration ease, transform $anim-duration ease);
+//         margin-bottom: 5px;
+//         direction: ltr;
+
+//         // Modifier: Hidden State
+//         &--hidden {
+//             @include opacity(0);
+//             @include transform(translateY(20px));
+//             pointer-events: none;
+//         }
+//     }
+
+//     &__thumb-container {
+//         @include flexbox();
+//         gap: var(--thumb-gap);
+//         @include align-items(flex-end);
+//         height: 100%;
+//     }
+
+//     &__thumb-slide {
+//         width: var(--thumb-w);
+//         height: 100%;
+//         @include flexbox();
+//         @include align-items(flex-end);
+//         flex-shrink: 0;
+//         cursor: pointer;
+//         position: relative;
+//         @include transition(all 0.5s cubic-bezier(0.25, 1, 0.5, 1));
+//         @include animation(slideIn 0.5s ease-out forwards);
+
+//         &:hover {
+//             .hero-slider__thumb-img {
+//                 @include transform(scale(1.1));
+//                 border-color: rgba(var(--color-white), 0.8);
+//             }
+//         }
+//     }
+
+//     &__thumb-title {
+//         position: absolute;
+//         bottom: 0;
+//         left: 0;
+//         right: 0;
+//         padding: 10px;
+//         background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+//         color: var(--color-white);
+//         @include font-size(14, 1.2);
+//         font-weight: var(--fontMedium);
+//         text-align: center;
+//         pointer-events: none;
+//         @include transition(opacity 0.3s ease);
+//     }
+
+
+//     @include keyframes(slideIn) {
+//         from {
+//             @include opacity(0);
+//             @include transform(translateX(50px));
+//         }
+
+//         to {
+//             @include opacity(1);
+//             @include transform(translateX(0));
+//         }
+//     }
+
+
+//     &__thumb-img {
+//         width: var(--thumb-w);
+//         height: var(--thumb-h);
+//         @include object-fit(cover);
+//         border: 2px solid transparent;
+//         @include transition(transform 1s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s);
+//         @include transform-origin(bottom center);
+//     }
+
+//     // --- 5. Control Bar (Progress + Nav) ---
+//     &__control-bar {
+//         display: flex;
+//         align-items: center;
+//         gap: 20px;
+//         width: var(--wrapper-width);
+//         justify-content: flex-end;
+//     }
+
+//     &__progress-track {
+//         flex-grow: 1;
+//         height: 2px;
+//         background: rgba(255, 255, 255, 0.2);
+//         position: relative;
+//     }
+
+//     &__progress-fill {
+//         position: absolute;
+//         left: 0;
+//         top: 0;
+//         height: 100%;
+//         width: 0%;
+//         background: var(--color-white);
+//     }
+
+//     &__nav {
+//         @include flexbox();
+//         gap: 10px;
+//         flex-shrink: 0;
+//     }
+
+//     &__nav-btn {
+//         position: relative;
+//         @include size(45px);
+//         border: 1px solid rgba(var(--color-white), 1);
+//         @include border-radius(50%);
+//         @include flex-center();
+//         cursor: pointer;
+//         @include transition(all 0.3s ease);
+//         color: var(--color-white);
+
+//         &:hover {
+//             background: var(--color-white);
+//             color: var(--color-black);
+//             border-color: var(--color-white);
+//         }
+
+//         &--disabled {
+//             pointer-events: none;
+//             @include opacity(0.3);
+//             cursor: not-allowed;
+//         }
+
+//         // Arrow Icons via CSS
+//         &--prev::after {
+//             content: '';
+//             display: inline-block;
+//             padding: 4px;
+//             border: solid currentColor;
+//             border-width: 0 2px 2px 0;
+//             transform: rotate(135deg);
+//             margin-left: 4px;
+//         }
+
+//         &--next::after {
+//             content: '';
+//             display: inline-block;
+//             padding: 4px;
+//             border: solid currentColor;
+//             border-width: 0 2px 2px 0;
+//             transform: rotate(-45deg);
+//             margin-right: 4px;
+//         }
+//     }
+// }
+
+
+// HeroSlider.module.scss
+
+// HeroSlider.scss
+
+.hero-slider {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+    //font-family: 'Manrope', sans-serif;
+    overflow: hidden;
+
+    // --- VARIABLES ---
+    $thumb-width: 160px;
+    $thumb-height: 220px;
+    $thumb-gap: 15px;
+
+    // --- MAIN SLIDER SECTION ---
+    &__main {
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+
+        .swiper-slide {
+            position: relative;
+            overflow: hidden;
+            // Transform origin for scale-up effect from bottom-right (thumbnail position)
+            transform-origin: 90% 90%;
+        }
+    }
+
+    &__bg-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        filter: brightness(0.6);
+        transform-origin: center center;
+        will-change: transform;
+    }
+
+    &__content {
+        position: absolute;
+        bottom: 15%;
+        left: 10%;
+        z-index: 10;
+        color: #fff;
+        // max-width: 600px;
+    }
+
+    &__title-wrapper {
+        overflow: hidden;
+        margin-bottom: 10px;
+    }
+
+    &__title {
+        font-size: 5rem;
+        font-weight: 800;
+        line-height: 1;
+        transform: translateY(100%);
+        opacity: 0;
+        text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
+        @include mq(tablet-max){
+            @include font-size(90);
+        }
+        @include mq(desktop){
+            @include font-size(110);
+        }
+        @include mq(desktop-wide){
+            @include font-size(130);
+        }
+        @include mq(desktop-wide-max){
+            @include font-size(140);
+        }
+    }
+
+    &__subtitle {
+        font-size: 1.1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        opacity: 0;
+        transform: translateY(20px);
+        border-left: 1px solid rgba(255, 255, 255, 0.5);
+        padding-left: 15px;
+        display: none;
+    }
+
+    &__counter {
+        position: absolute;
+        bottom: 9%;
+        padding-bottom: 2px;
+        right: 5%;
+        font-size: 2rem;
+        color: var(--color-white);
+        font-weight: 700;
+        z-index: 2;
+
+        @include mq(tablet-wide) {
+            right: calc(5% + 120px);
+        }
+    }
+
+    // --- THUMBS SECTION (Queue-based) ---
+    &__thumbs {
+        position: absolute;
+        bottom: 17%;
+        right: -5%;
+        z-index: 20;
+        overflow: hidden;
+        transition: opacity 0.5s ease, transform 0.5s ease;
+
+        // Hidden state (during mid-cycle)
+        &--hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        @media (max-width: 1024px) {
+            display: none;
+        }
+    }
+
+    &__thumb-container {
+        display: flex;
+        gap: $thumb-gap;
+        align-items: flex-end;
+        justify-content: flex-end;
+        height: 100%;
+    }
+
+    // Individual Thumb Item (queue-based)
+    &__thumb-item {
+        width: $thumb-width;
+        height: $thumb-height;
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        position: relative;
+        opacity: 1;
+        animation: slideIn 0.5s ease-out forwards;
+        flex-shrink: 0;
+
+        &:hover {
+            .hero-slider__thumb-image {
+                transform: scale(1.1);
+                border-color: rgba(255, 255, 255, 0.8);
+            }
+        }
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    &__thumb-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+        border: 2px solid transparent;
+    }
+
+    &__thumb-text {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        color: #fff;
+        font-weight: 700;
+        font-size: 1.2rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    // --- PROGRESS BAR ---
+    &__progress-track {
+        position: absolute;
+        bottom: 5%;
+        right: 5%;
+        width: 300px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.2);
+        z-index: 30;
+
+        @media (max-width: 1024px) {
+            right: 5%;
+            width: 200px;
+        }
+    }
+
+    &__progress-bar {
+        height: 100%;
+       background-color: var(--color-primary);
+        width: 0%;
+        display: block;
+    }
+
+    // --- NAVIGATION ARROWS ---
+    &__nav {
+        position: absolute;
+        bottom: 8%;
+        right: 5%;
+        display: flex;
+        gap: 15px;
+        z-index: 30;
+
+        @media (max-width: 1024px) {
+            display: none;
+        }
+    }
+
+    &__nav-btn {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        color: #fff;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+
+        &:hover:not(&--disabled) {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+            transform: scale(1.1);
+        }
+
+        &--disabled {
+            pointer-events: none;
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        // Arrow Icons via CSS
+        &--prev::after {
+            content: '';
+            display: inline-block;
+            padding: 5px;
+            border: solid currentColor;
+            border-width: 0 2.5px 2.5px 0;
+            transform: rotate(135deg);
+            margin-left: 3px;
+        }
+
+        &--next::after {
+            content: '';
+            display: inline-block;
+            padding: 5px;
+            border: solid currentColor;
+            border-width: 0 2.5px 2.5px 0;
+            transform: rotate(-45deg);
+            margin-right: 3px;
+        }
+    }
+}

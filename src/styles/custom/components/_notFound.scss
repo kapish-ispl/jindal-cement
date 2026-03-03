@@ -1,0 +1,49 @@
+@use '../core/variables' as *;
+@use '../core/mixins' as *;
+@use '../components/generic/sizes' as *;
+
+.notfound-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    background-color: var(--color-secondary);
+}
+
+.notfound-title {
+    font-size: 6rem;
+    font-weight: 700;
+    color: var(--color-tertiary);
+    margin-bottom: 10px;
+}
+
+.notfound-subtitle {
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--color-white);
+    margin-bottom: 15px;
+}
+
+.notfound-text {
+    font-size: 1rem;
+    color: var(--color-white);
+    max-width: 400px;
+    margin-bottom: 30px;
+}
+
+.notfound-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.notfound-button:hover {
+    background-color: var(--color-accent-peach);
+}
