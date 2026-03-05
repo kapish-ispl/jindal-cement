@@ -12,6 +12,7 @@ import Footer from "@/components/Layout/Footer";
 import Header from "@/components/Layout/Header";
 import SmoothScrollProvider from "@/components/Layout/SmoothScrollProvider";
 import { AccessibilityProvider } from "@/context/AccessibilityContext";
+import "lenis/dist/lenis.css";
 
 export const poppins = Poppins({
   subsets: ["latin"],

@@ -5,7 +5,7 @@ import { GET_SPECIFIC_PAGE_ENDPOINT } from "@/config/apiConfig";
 import { CONSTANTS } from "@/config/constant";
 import { serverRequest } from "@/services/getServerSideRender";
 import { PageResponse } from "@/types/pageResponse";
-import CardSwipeSlider from "@/utils/CardSwipeSlider";
+import StackContainer from "@/utils/StackContainer";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -27,8 +27,8 @@ export async function generateMetadata(): Promise<Metadata> {
   if (!pageData) return {};
 
   const metaTitle = pageData.meta_title && pageData.meta_title !== ""
-      ? `${pageData.meta_title} | Jindal Steel`
-      : `${pageData.title} | Jindal Steel`;
+    ? `${pageData.meta_title} | Jindal Steel`
+    : `${pageData.title} | Jindal Steel`;
 
   const metaDescription =
     pageData.meta_description ||
@@ -81,8 +81,9 @@ export default async function Home() {
   if (!pageData) return notFound();
 
   return (
-  <>
-    <HomePage data={pageData} />
-  </>
+    <>
+      <HomePage data={pageData} />
+      <StackContainer />
+    </>
   )
 }
