@@ -18,13 +18,13 @@ const projects: Project[] = [
         title: "Phulwari Bridge",
         description:
             "Bridge infrastructure supporting reinforced foundations and long-term structural performance.",
-        image: "https://picsum.photos/1920/1080?random=1",
+        image: "https://d2lptvt2jijg6f.cloudfront.net/document/126/1772791406_Rectangle658.jpg",
     },
     {
         title: "River Dam Project",
         description:
             "Water infrastructure designed for long-term environmental sustainability.",
-        image: "https://picsum.photos/1920/1080?random=2",
+        image: "https://d2lptvt2jijg6f.cloudfront.net/document/126/1772791406_Rectangle660.jpg",
     },
     {
         title: "Metro Rail Tunnel",
@@ -89,19 +89,33 @@ const StackProjects: FC<StackProjectsProps> = ({ data }) => {
                     key={index}
                     className="stack-projects__card"
                     style={{ backgroundImage: `url(${project.image})` }}
-                >
-                    <div className="stack-projects__overlay">
-                        <div className="stack-projects__content">
-                            <h2 className="stack-projects__heading">
-                                <span className="stack-projects__accent"></span>
-                                Infrastructure Projects
-                            </h2>
+                >   <div className="stack-projects__overlay">
+                        <div className="container cus-container h-100">
+                            <div className="row h-100">
+                                <div className="col-12 h-100">
+                                    <div className="stack-projects__content">
+                                        <div className="hw">
+                                            <h2 className="stack-projects__heading c-content-32 ft_bold clr-white">
+                                                <span className="stack-projects__accent"></span>
+                                                Infrastructure Projects
+                                            </h2>
 
-                            <h3 className="stack-projects__title">{project.title}</h3>
+                                        </div>
+                                        <div className="hw">
+                                            <h3 className="stack-projects__title c-content-32 ft_bold clr-white">{project.title}</h3>
 
-                            <p className="stack-projects__description">
-                                {project.description}
-                            </p>
+                                            <p className="stack-projects__description c-content-20 clr-white ft_regular lh_1-6">
+                                                {project.description}
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
