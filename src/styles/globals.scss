@@ -735,3 +735,49 @@
   width: 100%;
   height: 1px;
 }
+
+
+.carousel-wrapper {
+  position: relative;
+  height: 100vh;
+  display: flex;
+
+  .mySwiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .custom-pagination {
+    position: absolute;
+    left: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    .fraction {
+      font-family: sans-serif;
+      color: #666;
+      font-size: 14px;
+    }
+
+    .progress-container {
+      width: 2px;
+      height: 400px; // Adjust based on design
+      background: #e0e0e0; // Gray line
+      position: relative;
+
+      .progress-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #ff6b00; // Orange progress
+        transition: height 0.4s ease, top 0.4s ease;
+      }
+    }
+  }
+}
