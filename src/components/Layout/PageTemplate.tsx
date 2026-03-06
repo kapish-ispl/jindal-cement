@@ -38,8 +38,9 @@ const CardSwipeSlider = dynamic(() => import("@/utils/CardSwipeSlider"), { ssr: 
 const CategorySlider = dynamic(() => import("@/utils/CategorySlider"), { ssr: false });
 const CustomCarouselSlider = dynamic(() => import("@/utils/CustomCarouselSlider"), { ssr: false });
 const StackSlider = dynamic(() => import("@/utils/StackSlider"), { ssr: false });
-const VerticalCarousel = dynamic(() => import("@/utils/VerticalCarousel"), { ssr: false });
 const StackProjects = dynamic(() => import("@/utils/StackProjects"), { ssr: false });
+const VerticalCarousel = dynamic(() => import("@/utils/VerticalCarousel"), { ssr: false });
+const TextScrollAnimation = dynamic(() => import("@/utils/TextScrollAnimation"), { ssr: false });
 
 
 const PageTemplate = ({ data }: { data: PageResponse }) => {
@@ -78,6 +79,10 @@ const PageTemplate = ({ data }: { data: PageResponse }) => {
                 if (domNode.name === "verticalcarousel") {
                     const children = domToReact(domNode.children as DOMNode[]);
                     return <VerticalCarousel data={Array.isArray(children) ? children : [children]} />
+                }
+                if (domNode.name === "textscrollanimation") {
+                    const children = domToReact(domNode.children as DOMNode[]);
+                    return <TextScrollAnimation data={Array.isArray(children) ? children : [children]} />
                 }
                 if (domNode.name === "stackprojects") {
                     const children = domToReact(domNode.children as DOMNode[]);

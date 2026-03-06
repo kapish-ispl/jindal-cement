@@ -4,10 +4,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper/modules';
 
 import { useDeviceType } from '@/hooks/useDeviceType';
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 
 export default function VerticalCarousel({ data }: { data: any }) {
     const filteredData = data.filter((item: any) => item.props !== undefined);
