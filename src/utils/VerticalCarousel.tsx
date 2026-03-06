@@ -53,7 +53,7 @@ export default function VerticalCarousel({ data }: { data: any }) {
                 <div className="custom-pagination">
                     <div className="fraction">{activeIndex} / {totalSlides}</div>
                     <div className="progress-container">
-                        <div className="progress-bar" style={{ height: `${thumbHeight}%`, top: `${thumbTop}%` }}></div>
+                        <div className="progress-bar" style={deviceType === 'desktop' ? { height: `${thumbHeight}%`, top: `${thumbTop}%` } : { width: `${thumbHeight}%`, left: `${thumbTop}%`, height: "100%" }}></div>
                     </div>
                 </div>
             )}
