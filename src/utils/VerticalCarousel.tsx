@@ -40,7 +40,7 @@ export default function VerticalCarousel() {
                     prevEl: '.up-btn',
                 }}
                 modules={[Pagination, Navigation]}
-                className="mySwiper"
+                className="mySwiper c-swiperSlider"
             >
                 <SwiperSlide>
                     <div className="row align-items-center">
@@ -79,8 +79,14 @@ export default function VerticalCarousel() {
 
             {/* Navigation Arrows */}
             <div className="nav-buttons">
-                <button className="up-btn">↑</button>
-                <button className="down-btn">↓</button>
+                <button className="up-btn"><span><svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.52366 16.2646L13.2713 11.517L18.019 16.2646L19.5827 14.7009L13.2713 8.38951L6.95991 14.7009L8.52366 16.2646Z" fill="#636466" />
+                </svg>
+                </span></button>
+                <button className="down-btn"><span><svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.52366 16.2646L13.2713 11.517L18.019 16.2646L19.5827 14.7009L13.2713 8.38951L6.95991 14.7009L8.52366 16.2646Z" fill="#636466" />
+                </svg>
+                </span></button>
             </div>
         </div>
     );
