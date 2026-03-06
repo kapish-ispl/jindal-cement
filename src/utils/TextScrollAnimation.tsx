@@ -19,8 +19,7 @@ const TextScrollAnimation: FC<TextScrollAnimationProps> = ({ data }) => {
     useGSAP(() => {
         if (!textRef.current || !containerRef.current) return;
 
-        // Find the closest section container to pin the entire section
-        const sectionContainer = containerRef.current.closest('.commonSection-lg') as HTMLElement;
+        const sectionContainer = containerRef.current.closest('#textAnimationContainer') as HTMLElement;
         if (!sectionContainer) return;
 
         const split = new GSAPSplitText(textRef.current, {
