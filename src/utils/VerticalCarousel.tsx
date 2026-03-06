@@ -7,6 +7,7 @@ import { Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { useDeviceType } from '@/hooks/useDeviceType';
 
 export default function VerticalCarousel() {
     const [activeIndex, setActiveIndex] = useState(1);
@@ -24,11 +25,12 @@ export default function VerticalCarousel() {
 
     const thumbHeight = totalSlides > 0 ? (1 / totalSlides) * 100 : 0;
     const thumbTop = totalSlides > 0 ? ((activeIndex - 1) / totalSlides) * 100 : 0;
+    const deviceType = useDeviceType();
 
     return (
         <div className="carousel-wrapper">
             <Swiper
-                direction={'vertical'}
+                direction={deviceType === 'desktop' ? 'vertical' : 'horizontal'}
                 slidesPerView={1}
                 spaceBetween={0}
                 loop={true}

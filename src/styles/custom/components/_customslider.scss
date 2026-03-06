@@ -217,8 +217,18 @@
 
 .carousel-wrapper {
   position: relative;
-  height: 100vh;
+  height: 700px;
   display: flex;
+
+  // @include mq(desktop) {
+  //   height: 75vh;
+  // }
+  // @include mq(desktop-wide) {
+  //   height: 70vh;
+  // }
+  @include mq(desktop) {
+    height: 650px;
+  }
 
   .mySwiper {
     width: 100%;
@@ -227,26 +237,47 @@
 
   .custom-pagination {
     position: absolute;
-    left: 0px;
-    top: 0;
+    bottom: 0;
+    left: 100px;
     // transform: translateY(-50%);
     z-index: 10;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 20px;
+    width: 100%;
+
+    @include mq(tablet-max) {
+      bottom: unset;
+      top: 0;
+      align-items: center;
+      left: 0;
+      width: unset;
+    }
 
     .fraction {
       font-family: sans-serif;
       color: #666;
       font-size: 14px;
+      display: none;
+
+      @include mq(tablet-max) {
+        display: block;
+      }
     }
 
     .progress-container {
-      width: 2px;
-      height: 400px; // Adjust based on design
       background: #A1A1A1; // Gray line
       position: relative;
+      height: 2px;
+      width: 100%;
+      max-width: 500px;
+
+      @include mq(tablet-max) {
+        width: 2px;
+        height: 400px; // Adjust based on design
+        max-width: unset;
+      }
 
       .progress-bar {
         position: absolute;
@@ -261,14 +292,20 @@
 
   .nav-buttons {
     position: absolute;
-    left: -6px;
-    bottom: 38%;
     @include flexbox;
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
     @include transform (translateY(-50%));
     z-index: 99;
     cursor: pointer;
+    left: 0;
+    bottom: -38px;
+
+    @include mq(tablet-max) {
+      flex-direction: column;
+      left: -6px;
+      bottom: 0;
+    }
 
     button {
       @include size(40px);
@@ -290,7 +327,28 @@
 .c-swiperSlider {
   .swiper-wrapper {
     .swiper-slide {
-      padding: 0px 90px;
+      @include mq(tablet-max) {
+        padding: 0px 40px;
+      }
+
+      @include mq(desktop) {
+        padding: 0px 70px;
+      }
+
+      @include mq(desktop-wide) {
+        padding: 0px 90px;
+
+      }
+    }
+  }
+
+  .twoColumnContainer__image {
+    .u-img {
+      max-width: 500px;
+
+      @include mq(desktop) {
+        max-width: 600px;
+      }
     }
   }
 }
