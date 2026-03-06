@@ -8,7 +8,6 @@ import { useDeviceType } from '@/hooks/useDeviceType';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { useDeviceType } from '@/hooks/useDeviceType';
 
 export default function VerticalCarousel({ data }: { data: any }) {
     const filteredData = data.filter((item: any) => item.props !== undefined);
@@ -27,7 +26,6 @@ export default function VerticalCarousel({ data }: { data: any }) {
     return (
         <div className="carousel-wrapper">
             <Swiper
-                direction={deviceType === 'desktop' ? 'vertical' : 'horizontal'}
                 direction={deviceType === 'desktop' ? 'vertical' : 'horizontal'}
                 slidesPerView={1}
                 spaceBetween={0}
