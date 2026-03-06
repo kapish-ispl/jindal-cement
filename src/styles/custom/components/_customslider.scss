@@ -315,9 +315,24 @@
       background-color: transparent;
       border: 1px solid var(--color-secondary);
 
+      &.up-btn {
+        svg {
+          @include transform (rotate(265deg));
+
+          @include mq(tablet-max) {
+            @include transform(rotate(0deg));
+          }
+        }
+      }
+
       &.down-btn {
         svg {
-          transform: rotate(180deg);
+          transform: rotate(90deg);
+
+          @include mq(tablet-max) {
+            transform: rotate(180deg);
+
+          }
         }
       }
     }
@@ -344,10 +359,10 @@
 
   .twoColumnContainer__image {
     .u-img {
-      max-width: 500px;
+      max-width: 400px;
 
       @include mq(desktop) {
-        max-width: 600px;
+        max-width: 500px;
       }
     }
   }
