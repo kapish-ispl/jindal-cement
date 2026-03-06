@@ -22,7 +22,8 @@ export default function VerticalCarousel() {
         setTotalSlides(swiper.slides.filter((slide: any) => !slide.classList.contains('swiper-slide-duplicate')).length);
     };
 
-    const progress = totalSlides > 0 ? (activeIndex / totalSlides) * 100 : 0;
+    const thumbHeight = totalSlides > 0 ? (1 / totalSlides) * 100 : 0;
+    const thumbTop = totalSlides > 0 ? ((activeIndex - 1) / totalSlides) * 100 : 0;
 
     return (
         <div className="carousel-wrapper">
@@ -52,7 +53,7 @@ export default function VerticalCarousel() {
             <div className="custom-pagination">
                 <div className="fraction">{activeIndex} / {totalSlides}</div>
                 <div className="progress-container">
-                    <div className="progress-bar" style={{ height: `${progress}%` }}></div>
+                    <div className="progress-bar" style={{ height: `${thumbHeight}%`, top: `${thumbTop}%` }}></div>
                 </div>
             </div>
 

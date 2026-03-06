@@ -776,7 +776,7 @@
         left: 0;
         width: 100%;
         background: #ff6b00; // Orange progress
-        transition: height 0.4s ease;
+        transition: height 0.4s ease, top 0.4s ease;
       }
     }
   }
