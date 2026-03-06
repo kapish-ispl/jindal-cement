@@ -89,7 +89,7 @@ const MilestoneSection: FC<{ data?: any }> = () => {
         <section className="commonSection-lg c-twoColumnContainer" ref={containerRef}>
             <div className="container cus-container">
                 <div className="row">
-                    <div className="col-md-6 col-12">
+                    <div className="col-lg-5 col-12">
                         <div className="hw mb-3">
                             <div className="c-content-20 ft_bold clr-gray text-uppar lh_1-4">Our Milestone</div>
                             <div className="c-heading-60 ft_bold clr-gray lh_1-1">Built Through Manufacturing</div>
@@ -98,7 +98,7 @@ const MilestoneSection: FC<{ data?: any }> = () => {
                         <div className="c-content-20 clr-gray lh_1-6 ft_regular mb-3">Capacity has been built in phases—anchored in industrial discipline, integration of steel by-products, and long-term performance requirements.</div>
                         <div className="c-content-20 clr-gray lh_1-6 ft_regular">Each milestone reflects a deliberate step toward scalable, responsible cement manufacturing aligned with India's infrastructure needs.</div>
                     </div>
-                    <div className="col-12 col-md-6">
+                    <div className="col-12 col-lg-7">
                         {/* Middle: Vertical Tabs */}
                         <div className="milestone-section__tabs-wrapper">
                             <div className="milestone-section__tabs">
@@ -123,13 +123,16 @@ const MilestoneSection: FC<{ data?: any }> = () => {
                                     />
                                 ))}
                                 <div className="milestone-overlay" ref={contentRef}>
-                                    <div className="location">
+                                    <div className="location ft_medium lh_1-2 clr-primary">
                                         <svg viewBox="0 0 24 24">
                                             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                                         </svg>
                                         {activeMilestone.location}
                                     </div>
-                                    <p className="caption" dangerouslySetInnerHTML={{ __html: activeMilestone.caption }} />
+                                    <p className="caption c-content-20 clr-white ft_medium lh_1-6" dangerouslySetInnerHTML={{ __html: activeMilestone.caption }} />
+                                    <div className="action-btn">
+                                        <a className="u-btn clr-green" href="/our-story"><svg fill="none" height="28" viewBox="0 0 45 28" width="45" xmlns="http://www.w3.org/2000/svg"> <path d="M29.2084 0.556544C29.9723 -0.185706 31.211 -0.18533 31.9751 0.556544L44.4269 12.6558C45.191 13.3983 45.191 14.6017 44.4269 15.3442L31.9751 27.4435C31.211 28.1853 29.9723 28.1857 29.2084 27.4435C28.4446 26.7012 28.445 25.4976 29.2084 24.7551L38.3204 15.9011L1.39012e-06 15.9011L1.05772e-06 12.0989L38.3204 12.0989L29.2084 3.24486C28.445 2.50238 28.4446 1.29879 29.2084 0.556544Z" fill="#4FB848"></path> </svg> </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
