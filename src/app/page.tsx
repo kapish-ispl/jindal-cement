@@ -85,7 +85,13 @@ export default async function Home() {
     <>
       <HomePage data={pageData} />
       {/* <StackContainer /> */}
-      <VerticalCarousel />
+
+      <div className="commonSection-lg c-twoColumnContainer">
+        <div className="container cus-container">
+
+          <VerticalCarousel />
+        </div>
+      </div>
     </>
   )
 }
