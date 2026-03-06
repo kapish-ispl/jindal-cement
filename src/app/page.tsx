@@ -6,6 +6,7 @@ import { CONSTANTS } from "@/config/constant";
 import { serverRequest } from "@/services/getServerSideRender";
 import { PageResponse } from "@/types/pageResponse";
 import StackContainer from "@/utils/StackContainer";
+import VerticalCarousel from "@/utils/VerticalCarousel";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -83,7 +84,8 @@ export default async function Home() {
   return (
     <>
       <HomePage data={pageData} />
-      <StackContainer />
+      {/* <StackContainer /> */}
+      <VerticalCarousel />
     </>
   )
 }
