@@ -1,0 +1,149 @@
+@use '../core/variables' as *;
+@use '../core/mixins' as *;
+
+.milestone-section {
+
+    &__tabs-wrapper {
+        width: 100px;
+
+        @include mq(tablet-max) {
+            width: 100%;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding-bottom: 10px;
+            -webkit-overflow-scrolling: touch;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    }
+
+    &__tabs {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        @include mq(tablet-max) {
+            flex-direction: row;
+            gap: 20px;
+            padding: 0 15px;
+        }
+    }
+
+    &__tab {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #999;
+        font-weight: 600;
+        font-size: 16px;
+        padding: 8px 15px;
+        border-radius: 20px;
+
+        &::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background-color: #999;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        &.active {
+            color: #fff;
+            background-color: #f26522;
+
+            &::before {
+                background-color: #fff;
+            }
+        }
+
+        &:hover:not(.active) {
+            color: #666;
+
+            &::before {
+                background-color: #666;
+            }
+        }
+    }
+
+    @include mq(tablet-max) {
+        width: 100%;
+        min-width: unset;
+        height: 350px;
+    }
+
+    &__wrapper {
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+
+        @include mq(tablet-max) {
+            height: 350px;
+        }
+
+        .milestone-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+
+            &.milestone-image-active {
+                z-index: 2;
+            }
+        }
+
+        .milestone-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+            color: #fff;
+            z-index: 3;
+
+            @include mq(tablet-max) {
+                padding: 20px;
+            }
+
+            .location {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                font-size: 12px;
+                font-weight: 700;
+                color: #f26522;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+
+                svg {
+                    width: 12px;
+                    height: 12px;
+                    fill: currentColor;
+                }
+            }
+
+            .caption {
+                font-size: 20px;
+                font-weight: 600;
+                line-height: 1.4;
+
+                span {
+                    color: #f26522;
+                }
+
+                @include mq(tablet-max) {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+}

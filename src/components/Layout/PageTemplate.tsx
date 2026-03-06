@@ -41,6 +41,7 @@ const StackSlider = dynamic(() => import("@/utils/StackSlider"), { ssr: false })
 const StackProjects = dynamic(() => import("@/utils/StackProjects"), { ssr: false });
 const VerticalCarousel = dynamic(() => import("@/utils/VerticalCarousel"), { ssr: false });
 const TextScrollAnimation = dynamic(() => import("@/utils/TextScrollAnimation"), { ssr: false });
+const MilestoneSection = dynamic(() => import("@/utils/MilestoneSection"), { ssr: false });
 
 
 const PageTemplate = ({ data }: { data: PageResponse }) => {
@@ -88,6 +89,9 @@ const PageTemplate = ({ data }: { data: PageResponse }) => {
                     const children = domToReact(domNode.children as DOMNode[]);
                     return <StackProjects data={Array.isArray(children) ? children : [children]} />
                 }
+                // if (domNode.name === "milestonesection") {
+                //     return <MilestoneSection />
+                // }
                 if (domNode.name === "customzoomscrolleffect") {
                     const props = attributesToProps(domNode.attribs);
                     return <CustomZoomScrollEffect {...props} videourl={String(props.videourl)} />;
