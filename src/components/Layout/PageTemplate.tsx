@@ -42,6 +42,7 @@ const StackProjects = dynamic(() => import("@/utils/StackProjects"), { ssr: fals
 const VerticalCarousel = dynamic(() => import("@/utils/VerticalCarousel"), { ssr: false });
 const TextScrollAnimation = dynamic(() => import("@/utils/TextScrollAnimation"), { ssr: false });
 const MilestoneSection = dynamic(() => import("@/utils/MilestoneSection"), { ssr: false });
+const CementSlider = dynamic(() => import("@/utils/CementSlider"), { ssr: false });
 
 
 const PageTemplate = ({ data }: { data: PageResponse }) => {
@@ -72,6 +73,9 @@ const PageTemplate = ({ data }: { data: PageResponse }) => {
                 }
                 if (domNode.name === "cardswipeslider") {
                     return <CardSwipeSlider />
+                }
+                if (domNode.name === "cementslider") {
+                    return <CementSlider />
                 }
                 if (domNode.name === "customcarouselslider") {
                     const children = domToReact(domNode.children as DOMNode[]);

@@ -1,6 +1,5 @@
 "use client";
 import { PageResponse } from '@/types/pageResponse';
-import CementSlider from '@/utils/CementSlider';
 import dynamic from 'next/dynamic';
 const PageTemplate = dynamic(() => import('./PageTemplate'), { ssr: false });
 const HomeBanner = dynamic(() => import('../Layout/HomeBanner'), { ssr: false });
@@ -15,7 +14,6 @@ const HomePage = ({ data }: { data: PageResponse }) => {
                     </div>
                 </div>
             </div>
-            <CementSlider />
             <PageTemplate data={data} />
         </>
     )

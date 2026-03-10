@@ -63,41 +63,49 @@
             line-height: 1.1 !important;
 
             span {
+
                 //font-weight: var(--fontMedium);
-                @include mq(tablet-small){
+                @include mq(tablet-small) {
                     @include font-size(30);
-            }
+                }
+
                 @include mq('tablet-wide') {
                     @include font-size(40);
                     width: auto;
                 }
+
                 @include mq('desktop-min') {
                     @include font-size(50);
                 }
+
                 @include mq('desktop-wide') {
                     @include font-size(60);
                 }
-    
+
                 @include mq('desktop-wide-max') {
                     @include font-size(80);
                 }
             }
-            @include mq(tablet-small){
+
+            @include mq(tablet-small) {
                 display: inline;
                 @include font-size(30);
             }
+
             @include mq('tablet-wide') {
                 @include font-size(40);
                 width: auto;
-                
+
             }
 
             @include mq('desktop-min') {
                 @include font-size(50);
             }
+
             @include mq('desktop-wide') {
                 @include font-size(60);
             }
+
             @include mq('desktop-wide-max') {
                 @include font-size(80);
             }
@@ -125,7 +133,7 @@
         z-index: 20;
         height: 100%;
         width: 100%;
-        background: rgba(0,0,0,0.4);
+        background: rgba(0, 0, 0, 0.4);
     }
 
     // &:after {
@@ -216,7 +224,7 @@
 }
 
 .c-banner {
-    min-height: 600px;
+    height: 600px;
 
     &:before {
         display: none;
