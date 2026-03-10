@@ -549,6 +549,7 @@ Common styles for navigation elements.
     position: static;
     width: 100%;
     overflow: hidden;
+
     &.buttons_absolute {
         .c-embla__buttons {
             position: absolute;
@@ -730,9 +731,9 @@ Common styles for navigation elements.
                 &-ls {
                     .hw {
                         &.withBoder {
-                             border-bottom: 5px solid #F47920;
-                             transform: scale(1.05);
-                             padding-left: 30px;
+                            border-bottom: 5px solid #F47920;
+                            transform: scale(1.05);
+                            padding-left: 30px;
                         }
                     }
                 }
@@ -749,9 +750,11 @@ Common styles for navigation elements.
     @include transform(translateY(-50%));
     @include flexbox;
     gap: 15px;
-    @include mq(tablet-max){
+
+    @include mq(tablet-max) {
         bottom: 40px;
     }
+
     button {
         outline: none;
 
@@ -844,7 +847,8 @@ Common styles for navigation elements.
                         opacity: 0;
                         margin: 0;
                     }
-                    &.withBorder{
+
+                    &.withBorder {
                         border-bottom: 2px solid #ffffffbf;
                         padding-bottom: 15px;
                         min-width: 250px;
@@ -1117,19 +1121,101 @@ Common styles for navigation elements.
     }
 
 }
-.c-slider__arrow{
-    .c-embla__dots-wrap{
+
+.c-slider__arrow {
+    .c-embla__dots-wrap {
         top: unset;
         transform: unset;
         width: 100%;
         @include justify-content(center);
         right: 20px;
         bottom: 0px;
-        @include mq(tablet){
+
+        @include mq(tablet) {
             bottom: -20px;
         }
-        .c-embla__dots{
+
+        .c-embla__dots {
             flex-direction: row;
+        }
+    }
+}
+
+.c-slider__wrap {
+    .c-embla {
+        &__viewport {
+            .c-embla__container {
+                .c-embla__slide {
+                    white-space: unset !important;
+
+                    @include mq(tablet) {
+                        margin: 0px 10px;
+                    }
+
+                }
+            }
+        }
+
+        &__buttons {
+            .c-embla__arrow--prev {
+                top: unset;
+                bottom: 10px;
+                left: unset;
+                right: 50px;
+
+                @include mq(tablet-max) {
+                    right: 20px;
+                }
+            }
+
+            .c-embla__arrow--next {
+                top: unset;
+                bottom: 10px;
+                right: 35px;
+
+                @include mq(tablet-max) {
+                    right: 0;
+                }
+            }
+        }
+    }
+
+    &.v2 {
+        .c-embla {
+            &__viewport {
+                .c-embla__slide {
+                    margin: 0px;
+                    padding: 0px 10px;
+                    box-sizing: border-box;
+                }
+            }
+        }
+
+        .c-embla__buttons {
+            position: static;
+
+            .c-embla__arrow {
+                @include mq(tablet-max) {
+
+                    bottom: unset;
+                    top: 10px;
+                    border-color: var(--color-secondary) !important;
+                }
+
+                &.c-embla__arrow--prev {
+                    @include mq(tablet-max) {
+
+                        right: 30px;
+                    }
+                }
+
+                &.c-embla__arrow--next {
+                    @include mq(tablet-max) {
+
+                        right: 10px;
+                    }
+                }
+            }
         }
     }
 }

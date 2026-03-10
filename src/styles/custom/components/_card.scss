@@ -1240,6 +1240,7 @@
         }
     }
 }
+
 .c-bento__card {
     &__wrapper {
         position: relative;
@@ -1250,7 +1251,7 @@
             bottom: 0px;
             left: 0px;
             padding: 20px;
-            z-index: 9; 
+            z-index: 9;
             opacity: 1;
             transition: all ease-in-out 0s;
             // animation-name: delayAni;
@@ -1293,7 +1294,7 @@
         &.v2 {
             background: var(--color-grey2);
             padding: 48px 27px;
-          
+
 
             .c-bento__card__wrapper_content {
                 position: unset;
@@ -1334,35 +1335,39 @@
     &.v2 {
         @include flexbox;
         gap: 22px;
-          @include flex-direction(column, vertical);
-            @include mq(tablet-max){
-                @include flex-direction(row, horizontal);
-            }
+        @include flex-direction(column, vertical);
+
+        @include mq(tablet-max) {
+            @include flex-direction(row, horizontal);
+        }
 
         .c-bento__card__wrapper {
-            
+
             @include transition(all 0.3s ease-in-out);
             cursor: pointer;
             overflow: hidden;
             border-radius: 8px;
             height: 500px;
-            box-shadow: unset; 
+            box-shadow: unset;
             transition-delay: 0.2s;
-            @include mq(tablet){
+
+            @include mq(tablet) {
                 height: 457px;
             }
-            @include mq(tablet-max){
+
+            @include mq(tablet-max) {
                 flex: 1 1 0%;
             }
+
             &:hover {
-                @include mq(tablet-max){
+                @include mq(tablet-max) {
                     flex: 0 0 50%;
                 }
-                
-                
+
+
 
                 .c-bento__card__wrapper_content {
-                    @include transform(translateX(0px)); 
+                    @include transform(translateX(0px));
                     opacity: 1;
                     transition-delay: 0.7s;
                     transition-timing-function: ease-out;
@@ -1470,21 +1475,103 @@
     }
 
 }
-.c-productCard__wrapper{
+
+.c-productCard__wrapper {
     position: relative;
-    &-img{
+
+    &-img {
         @include border-radius(8px);
         overflow: hidden;
 
     }
-    &-info{
+
+    &-info {
         padding: 24px 0px 35px 0px;
-        .action-btn{
-            &.fixPostion{
+
+        .action-btn {
+            &.fixPostion {
                 position: absolute;
                 left: 0;
                 bottom: 0px;
-                
+
+            }
+        }
+    }
+}
+
+.c-bentoCard {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(center);
+    margin-top: 20px;
+
+    @include mq(tablet-max) {
+        margin-top: 0px;
+    }
+
+    &__item {
+        position: relative;
+
+        &_overlay {
+            .overlayMedia_top {
+                position: relative;
+                margin: 10px 0px;
+
+                @include mq(tablet-max) {
+                    position: absolute;
+                    top: -100px;
+                    right: 0;
+                    margin: 0px;
+                }
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.2);
+                    left: 0;
+                    top: 0;
+                    z-index: 1;
+                    @include border-radius(18px);
+                }
+
+                .u-img {
+                    @include border-radius(18px);
+                    width: 100%;
+                    max-width: 408px;
+                }
+            }
+
+            .overlayMedia_bottom {
+                position: relative;
+                margin: 10px 0px;
+
+                @include mq(tablet-max) {
+                    position: absolute;
+                    bottom: -100px;
+                    right: 50%;
+                    transform: translateX(50%);
+                    margin: 0px;
+                }
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.2);
+                    left: 0;
+                    top: 0;
+                    z-index: 1;
+                    @include border-radius(18px);
+                }
+
+                .u-img {
+                    @include border-radius(18px);
+                    width: 100%;
+                    max-width: 315px;
+                }
             }
         }
     }
