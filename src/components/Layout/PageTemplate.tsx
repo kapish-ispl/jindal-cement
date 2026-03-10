@@ -89,9 +89,10 @@ const PageTemplate = ({ data }: { data: PageResponse }) => {
                     const children = domToReact(domNode.children as DOMNode[]);
                     return <StackProjects data={Array.isArray(children) ? children : [children]} />
                 }
-                // if (domNode.name === "milestonesection") {
-                //     return <MilestoneSection />
-                // }
+                if (domNode.name === "milestonesection") {
+                    const children = domToReact(domNode.children as DOMNode[]);
+                    return <MilestoneSection data={Array.isArray(children) ? children : [children]} />
+                }
                 if (domNode.name === "customzoomscrolleffect") {
                     const props = attributesToProps(domNode.attribs);
                     return <CustomZoomScrollEffect {...props} videourl={String(props.videourl)} />;

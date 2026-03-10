@@ -82,7 +82,6 @@ export default async function Home() {
 
   return (
     <>
-      <MilestoneSection />
       <HomePage data={pageData} />
     </>
   )
