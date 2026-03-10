@@ -12,9 +12,9 @@
 
         @include mq(desktop-min) {
             margin-bottom: 20px;
-            
+
         }
-       
+
 
         &-info {
             //max-width: calc(100% - 150px);
@@ -101,47 +101,70 @@
             }
         }
     }
-    &.v4{
+
+    &.v4 {
         @include flexbox;
         @include flex-direction(column, vertical);
         gap: 20px;
-        @include mq(tablet-max){
+
+        @include mq(tablet-max) {
             @include flex-direction(row, horizontal);
             gap: unset;
         }
-        .listView__item{
+
+        .listView__item {
             @include flex-direction(column, vertical);
             flex: 1;
-            .listView__item-media{
+
+            .listView__item-media {
                 margin-bottom: 10px;
-                img{
+
+                img {
                     margin: 0;
                 }
             }
         }
     }
-    &__wrapper{
+
+    &__wrapper {
         @include flexbox;
         @include flex-direction(column, vertical);
         @include justify-content(center);
         @include align-items(center);
-        &-content{
-            .title,p{
+
+        &-content {
+
+            .title,
+            p {
                 text-align: center;
             }
-            p{
+
+            p {
                 max-width: 400px;
             }
-            .title{
+
+            .title {
                 margin: 15px 0px;
-                @include mq(tablet){
+
+                @include mq(tablet) {
                     margin: 20px 0px;
                 }
-                @include mq(tablet-max){
+
+                @include mq(tablet-max) {
                     margin: 25px 0px;
                 }
             }
-           
+
+        }
+    }
+
+    &.v5 {
+        .listView__item {
+            @include align-items(center);
+
+            &-icon {
+                padding-right: 16px;
+            }
         }
     }
 }

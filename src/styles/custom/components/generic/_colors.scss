@@ -2,44 +2,61 @@
 @use '../../core/mixins' as *;
 
 .clr-primary {
-  color: var(--color-primary) !important;
+    color: var(--color-primary) !important;
 }
-.clr-secondry{
+
+.clr-secondry {
     color: var(--color-secondary) !important;
 }
+
 .clr-black {
     color: var(--color-black) !important;
 }
-.clr-tertiary{
+
+.clr-tertiary {
     color: var(--color-tertiary) !important;
 }
+
 .clr-blue {
     color: var(--color-accent-blue) !important;
 }
+
 .clr-green {
     color: var(--color-accent-green) !important;
 }
+
 .clr-burgundy {
     color: var(--color-accent-red) !important;
 }
+
 .clr-oyster {
     color: var(--color-accent-oyster) !important;
 }
-.clr-peach{
+
+.clr-peach {
     color: var(--color-accent-peach) !important;
 }
-.clr-white{
+
+.clr-white {
     color: var(--color-white) !important;
 }
-.clr-olive{
+
+.clr-olive {
     color: var(--color-accent-olive) !important;
 }
+
 .bg-gray {
     background: var(--color-tertiary);
 }
-.clr-gray2{
+
+.clr-gray2 {
     background: var(--color-grey2);
 }
-.clr-lightGray{
+
+.clr-lightGray {
     color: var(--color-grey4) !important;
+}
+
+.bg-tertiary {
+    background: var(--color-tertiary) !important;
 }
