@@ -10,8 +10,8 @@ interface BannerMedia {
 }
 
 interface Props {
-    bannerMedia: BannerMedia[];
-    tagline: string;
+    bannerMedia?: BannerMedia[];
+    tagline?: string;
     pageTitle: string;
 }
 const HomeBanner: FC<Props> = ({ bannerMedia, tagline, pageTitle }) => {
@@ -29,7 +29,7 @@ const HomeBanner: FC<Props> = ({ bannerMedia, tagline, pageTitle }) => {
 
     return (
         <>
-            <div className={`c-banner ${bannerMedia.length > 0 ? "" : "without-banner"}`}>
+            <div className={`c-banner ${(bannerMedia && bannerMedia.length > 0) ? "" : "without-banner"}`}>
                 {bannerMedia && bannerMedia.length > 0 &&
 
                     <div className="c-banner__media">
