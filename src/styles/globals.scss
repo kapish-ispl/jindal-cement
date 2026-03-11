@@ -618,3 +618,101 @@
     }
   }
 }
+
+.c-growth-wrapper {
+  position: relative;
+  padding: 60px 0;
+
+  @include mq(tablet-max) {
+    padding: 80px 0;
+  }
+
+  &__header {
+    .c-heading-60 {
+      line-height: 1.1;
+    }
+  }
+
+  // &__animation-area {
+  //   margin-top: 40px;
+  //   min-height: 900px;
+  // }
+
+  &__line-box {
+    position: relative;
+    z-index: 1;
+
+    svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  &__img-node {
+    // position: absolute;
+    z-index: 2;
+    max-width: 300px;
+
+    @include mq(tablet) {
+      max-width: 350px;
+    }
+
+    @include mq(desktop-min) {
+      max-width: 694px;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    // &.node-1 {
+    //   top: 0;
+    //   right: 50px;
+    //   transform: translateY(-50%);
+
+    //   @include mq(desktop-min) {
+    //     right: 100px;
+    //     top: 50px;
+    //   }
+    // }
+
+    // &.node-2 {
+    //   top: 450px;
+    //   left: 50px;
+    //   transform: translateY(-50%);
+
+    //   @include mq(desktop-min) {
+    //     left: 100px;
+    //   }
+    // }
+
+    // &.node-3 {
+    //   bottom: 50px;
+    //   left: 50px;
+    //   transform: translateY(0);
+
+    //   @include mq(desktop-min) {
+    //     left: 80px;
+    //   }
+    // }
+  }
+
+  // &__footer-text {
+  //   position: absolute;
+  //   bottom: 50px;
+  //   right: 50px;
+  //   max-width: 400px;
+  //   z-index: 3;
+
+  //   @include mq(desktop-min) {
+  //     right: 100px;
+  //     max-width: 450px;
+  //   }
+
+  //   .clr-green {
+  //     color: #78C043 !important; // Green Cement color
+  //   }
+  // }
+}
