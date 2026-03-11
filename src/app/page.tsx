@@ -5,7 +5,6 @@ import { GET_SPECIFIC_PAGE_ENDPOINT } from "@/config/apiConfig";
 import { CONSTANTS } from "@/config/constant";
 import { serverRequest } from "@/services/getServerSideRender";
 import { PageResponse } from "@/types/pageResponse";
-import MilestoneSection from "@/utils/MilestoneSection";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
