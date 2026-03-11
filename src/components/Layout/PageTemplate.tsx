@@ -44,6 +44,7 @@ const TextScrollAnimation = dynamic(() => import("@/utils/TextScrollAnimation"),
 const MilestoneSection = dynamic(() => import("@/utils/MilestoneSection"), { ssr: false });
 const CementSlider = dynamic(() => import("@/utils/CementSlider"), { ssr: false });
 const SustainabilityScroll = dynamic(() => import("@/utils/SustainabilitySection"), { ssr: false });
+const LineAnimationSection = dynamic(() => import("@/utils/LineAnimationSection"), { ssr: false });
 
 
 const PageTemplate = ({ data }: { data: PageResponse }) => {
@@ -77,6 +78,9 @@ const PageTemplate = ({ data }: { data: PageResponse }) => {
                 }
                 if (domNode.name === "cementslider") {
                     return <CementSlider />
+                }
+                if (domNode.name === "lineanimationslider") {
+                    return <LineAnimationSection />
                 }
                 if (domNode.name === "sustainabilityscroll") {
                     return <SustainabilityScroll />
