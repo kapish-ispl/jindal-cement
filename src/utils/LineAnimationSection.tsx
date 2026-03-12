@@ -6,11 +6,13 @@ import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(ScrollTrigger);
 
 const WasteToValueSection = () => {
-    const sectionRef = useRef(null);
-    const path1Ref = useRef(null);
-    const path2Ref = useRef(null);
+    const sectionRef = useRef<HTMLElement>(null);
+    const path1Ref = useRef<SVGPathElement>(null);
+    const path2Ref = useRef<SVGPathElement>(null);
 
     useGSAP(() => {
+        if (!path1Ref.current || !path2Ref.current || !sectionRef.current) return;
+
         // Get lengths for both paths
         const length1 = path1Ref.current.getTotalLength();
         const length2 = path2Ref.current.getTotalLength();
@@ -115,7 +117,7 @@ const WasteToValueSection = () => {
                 </div>
             </div>
 
-            <style jsx>{`
+            <style {...{ jsx: "true" } as any}>{`
                 .svg-container-1 {
                     position: absolute;
                         top: 27.8%;
